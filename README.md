@@ -56,17 +56,3 @@ The tests check:
 - that equal-spin swaps have ΔE = 0
 - that the local ΔE matches the brute-force full-lattice difference
 
-## What's different from v0.1
-
-- Local ΔE instead of recomputing the full energy every step (orders of
-  magnitude speedup).
-- In-place swaps; no `deepcopy` in the hot loop.
-- Incremental energy tracking, running magnetization, acceptance ratio.
-- Configurable initial magnetization (Kawasaki conserves it, so this is the
-  physically meaningful control).
-- Snapshot every `snapshot_every` steps, with `copy` (not reference) so
-  frames are independent.
-- Removed unused `MKL` and `LaTeXStrings` imports.
-- `Project.toml` committed so the environment is reproducible.
-- Code split into a core module and a visualization module; a standalone
-  driver script; a test suite.
