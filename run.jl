@@ -4,8 +4,8 @@
 using Pkg
 Pkg.activate(joinpath(@__DIR__, ".."))
 
-include(joinpath(@__DIR__, "..", "src", "KawasakiMetropolis.jl"))
-include(joinpath(@__DIR__, "..", "src", "Visualization.jl"))
+include("KawasakiMetropolis.jl")
+include("Visualization.jl")
 
 using .KawasakiMetropolis
 using .Visualization
@@ -14,7 +14,7 @@ using Random
 # ---------------------------------------------------------------- parameters
 const N              = 64
 const J              = 1.0
-const kT             = 0.5
+const kT             = 2.0
 const n_steps        = 2_000_000
 const snapshot_every = 5_000
 const m              = 0.0      # magnetization density (conserved)
@@ -34,8 +34,8 @@ result = @time run_simulation(; N = N, J = J, kT = kT,
 @info "Final energy per site" result.energy[end] / (N * N)
 
 # ---------------------------------------------------------------- plots
-mkpath(joinpath(@__DIR__, "..", "Plots"))
-outdir = joinpath(@__DIR__, "..", "Plots")
+mkpath("Plots")
+outdir = joinpath(@__DIR__, "Plots")
 
 animate_positions(result.frames, kT, J;
                   fps = 30,

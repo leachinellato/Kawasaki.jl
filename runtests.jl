@@ -1,7 +1,7 @@
 using Test
 using Random
 
-include(joinpath(@__DIR__, "..", "src", "KawasakiMetropolis.jl"))
+include("KawasakiMetropolis.jl")
 using .KawasakiMetropolis
 
 @testset "KawasakiMetropolis" begin
